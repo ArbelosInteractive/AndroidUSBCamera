@@ -26,6 +26,7 @@
 # include <config.h>
 #endif
 
+#include <memory.h>
 #include "lame.h"
 #include "machine.h"
 #include "encoder.h"

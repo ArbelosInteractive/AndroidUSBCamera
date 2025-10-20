@@ -40,6 +40,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.jiangdg.demo.R
 import java.lang.IllegalArgumentException
+import com.jiangdg.ausbc.R as R2
 
 /**GlideImageLoader by glide
  *
@@ -73,7 +74,7 @@ class GlideLoader<T>(target: T) : ILoader<ImageView> {
         val centerCrop: Transformation<Bitmap> = CenterCrop()
         mRequestManager!!.load(url).optionalTransform(centerCrop)
             .optionalTransform(WebpDrawable::class.java, WebpDrawableTransformation(centerCrop))
-            .placeholder(R.drawable.imageloader_default_cover_bg)
+            .placeholder(R2.drawable.imageloader_default_cover_bg)
             .into(imageView)
     }
 
@@ -81,7 +82,7 @@ class GlideLoader<T>(target: T) : ILoader<ImageView> {
         val centerCrop: Transformation<Bitmap> = CenterCrop()
         mRequestManager!!.load(resId).optionalTransform(centerCrop)
             .optionalTransform(WebpDrawable::class.java, WebpDrawableTransformation(centerCrop))
-            .placeholder(R.drawable.imageloader_default_cover_bg)
+            .placeholder(R2.drawable.imageloader_default_cover_bg)
             .into(imageView)
     }
 
@@ -137,7 +138,7 @@ class GlideLoader<T>(target: T) : ILoader<ImageView> {
     }
 
     override fun loadRounded(imageView: ImageView, url: String?, radius: Float) {
-        loadRounded(imageView, url, R.drawable.imageloader_default_cover_bg, radius)
+        loadRounded(imageView, url, R2.drawable.imageloader_default_cover_bg, radius)
     }
 
     override fun loadCircle(imageView: ImageView, url: String?, placeHolder: Int) {
@@ -152,7 +153,7 @@ class GlideLoader<T>(target: T) : ILoader<ImageView> {
     override fun loadCircle(imageView: ImageView, url: String?) {
         mRequestManager?.apply {
             this.load(url)
-                .placeholder(R.drawable.imageloader_default_cover_bg)
+                .placeholder(R2.drawable.imageloader_default_cover_bg)
                 .apply(RequestOptions.bitmapTransform(CircleCrop()))
                 .into(imageView)
         }
@@ -170,7 +171,7 @@ class GlideLoader<T>(target: T) : ILoader<ImageView> {
     override fun loadCircle(imageView: ImageView, resId: Int) {
         mRequestManager?.apply {
             this.load(resId)
-                .placeholder(R.drawable.imageloader_default_cover_bg)
+                .placeholder(R2.drawable.imageloader_default_cover_bg)
                 .apply(RequestOptions.bitmapTransform(CircleCrop()))
                 .into(imageView)
         }
@@ -188,21 +189,21 @@ class GlideLoader<T>(target: T) : ILoader<ImageView> {
                 .load(url)
                 .listener(object : RequestListener<Bitmap> {
                     override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: Target<Bitmap>?,
-                        isFirstResource: Boolean
+	                    e: GlideException?,
+	                    model: Any?,
+	                    target: Target<Bitmap>,
+	                    isFirstResource: Boolean
                     ): Boolean {
                         listener.onLoadedFailed(e)
                         return true
                     }
 
                     override fun onResourceReady(
-                        resource: Bitmap?,
-                        model: Any?,
-                        target: Target<Bitmap>?,
-                        dataSource: DataSource?,
-                        isFirstResource: Boolean
+	                    resource: Bitmap,
+	                    model: Any,
+	                    target: Target<Bitmap>,
+	                    dataSource: DataSource,
+	                    isFirstResource: Boolean
                     ): Boolean {
                         listener.onLoadedSuccess(resource)
                         return true

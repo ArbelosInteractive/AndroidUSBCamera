@@ -19,12 +19,15 @@
  */
 #ifndef ANDROIDUSBCAMERA_PROXY_YUV_H
 #define ANDROIDUSBCAMERA_PROXY_YUV_H
+
+#include <cstdlib>
+#include <cstring>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <jni.h>
-#include <cstdlib>
 #include "../module/yuv/yuv.h"
 #include "../utils/logger.h"
 

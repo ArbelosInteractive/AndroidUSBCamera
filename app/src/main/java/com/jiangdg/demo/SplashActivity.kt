@@ -19,6 +19,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
@@ -37,9 +38,13 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startMainActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
-            Intent(this, MainActivity::class.java).apply {
-                startActivity(this)
-                finish()
+            try {
+                Intent(this, MainActivity::class.java).apply {
+                    startActivity(this)
+                    finish()
+                }
+            } catch (e: Throwable) {
+                Log.e("Splash", "error",  e)
             }
         }, 800)
     }
