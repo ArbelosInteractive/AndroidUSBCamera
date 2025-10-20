@@ -10,7 +10,7 @@ publishing {
             afterEvaluate {
                 artifact("$buildDir/outputs/aar/libuvc-release.aar")
 
-                groupId = "com.jiangdg"   
+                groupId = "com.ArbelosInteractive"   
                 artifactId = "libuvc"       
                 version = "3.3.0"              
             }

@@ -11,7 +11,7 @@ publishing {
             afterEvaluate {
                 artifact("$buildDir/outputs/aar/libausbc-release.aar")
 
-                groupId = "com.jiangdg"   
+                groupId = "com.ArbelosInteractive"   
                 artifactId = "libausbc"       
                 version = "3.3.0"              
             }
