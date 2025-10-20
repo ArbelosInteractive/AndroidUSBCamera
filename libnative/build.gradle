@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "com.jiangdg.natives"
     compileSdkVersion rootProject.ext.versionCompiler
+    ndkVersion rootProject.ext.ndkVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion

@@ -3,9 +3,36 @@ plugins {
     id 'kotlin-android'
 }
 
+publishing {
+    publications {
+        // "release" here is just the publication name, you can call it whatever
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.release
+
+                groupId = "com.jiangdg"   
+                artifactId = "libausbc"       
+                version = "3.3.0"              
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/arbelos/AndroidUSBCamera"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
 android {
     namespace = "com.jiangdg.ausbc"
     compileSdkVersion rootProject.ext.versionCompiler
+    ndkVersion rootProject.ext.ndkVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
