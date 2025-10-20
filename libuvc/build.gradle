@@ -10,7 +10,7 @@ publishing {
             afterEvaluate {
                 artifact("$buildDir/outputs/aar/libuvc-release.aar")
 
-                groupId = "com.ArbelosInteractive"   
+                groupId = "com.arbelos"
                 artifactId = "libuvc"       
                 version = "3.3.0"              
             }
@@ -24,7 +24,7 @@ publishing {
         }
         maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/arbelos/AndroidUSBCamera"
+            url = "https://maven.pkg.github.com/ArbelosInteractive/AndroidUSBCamera"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
