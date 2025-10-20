@@ -31,7 +31,11 @@ jobs:
               run: chmod +x gradlew
 
             - name: Accept Android SDK Licenses
-              run: y | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses
+              run: yes | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses
+
+            - name: Install NDK 28.0.12433566
+              run: |
+                  yes | sdkmanager "ndk;28.0.12433566"
 
             - name: Create local.properties
               run: |
