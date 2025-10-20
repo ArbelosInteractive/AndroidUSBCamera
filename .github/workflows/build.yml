@@ -31,7 +31,12 @@ jobs:
               run: chmod +x gradlew
 
             - name: Accept Android SDK Licenses
-              run: yes | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses
+              run: y | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses
+
+            - name: Create local.properties
+              run: |
+                  echo "sdk.dir=$ANDROID_SDK_ROOT" >> local.properties
+                  echo "ndk.dir=$ANDROID_NDK_HOME" >> local.properties
 
             - name: Publish package
               run: ./gradlew publish
