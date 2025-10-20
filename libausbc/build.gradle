@@ -9,9 +9,9 @@ publishing {
         // "release" here is just the publication name, you can call it whatever
         release(MavenPublication) {
             afterEvaluate {
-                from components.release
+                artifact("$buildDir/outputs/aar/libausbc-release.aar")
 
-                groupId = "com.jiangdg"   
+                groupId = "com.sethclim"   
                 artifactId = "libausbc"       
                 version = "3.3.0"              
             }

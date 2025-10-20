@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jiangdg.natives"
+    namespace = "com.sethclim.natives"
     compileSdkVersion rootProject.ext.versionCompiler
     ndkVersion rootProject.ext.ndkVersion
 
