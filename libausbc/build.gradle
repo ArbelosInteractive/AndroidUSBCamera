@@ -11,7 +11,7 @@ publishing {
             afterEvaluate {
                 artifact("$buildDir/outputs/aar/libausbc-release.aar")
 
-                groupId = "com.sethclim"   
+                groupId = "com.jiangdg"   
                 artifactId = "libausbc"       
                 version = "3.3.0"              
             }
@@ -19,6 +19,11 @@ publishing {
     }
 
     repositories {
+        maven {
+            name = "localTest"
+            url = uri("${buildDir}/mavenLocalTest")
+        }
+
         maven {
             name = "GitHubPackages"
             url = "https://maven.pkg.github.com/arbelos/AndroidUSBCamera"
@@ -30,8 +35,12 @@ publishing {
     }
 }
 
+tasks.withType(PublishToMavenRepository) {
+    dependsOn(":libausbc:assembleRelease")
+}
+
 android {
-    namespace = "com.sethclim.ausbc"
+    namespace = "com.jiangdg.ausbc"
     compileSdkVersion rootProject.ext.versionCompiler
     ndkVersion rootProject.ext.ndkVersion
 

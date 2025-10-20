@@ -18,6 +18,10 @@ publishing {
     }
 
     repositories {
+		maven {
+            name = "localTest"
+            url = uri("${buildDir}/mavenLocalTest")
+        }
         maven {
             name = "GitHubPackages"
             url = "https://maven.pkg.github.com/arbelos/AndroidUSBCamera"
@@ -29,8 +33,12 @@ publishing {
     }
 }
 
+tasks.withType(PublishToMavenRepository) {
+    dependsOn(":libuvc:assembleRelease")
+}
+
 android {
-	namespace = "com.sethclim.uvccamera"
+	namespace = "com.jiangdg.uvccamera"
 	compileSdkVersion rootProject.ext.versionCompiler
 	ndkVersion rootProject.ext.ndkVersion
 
