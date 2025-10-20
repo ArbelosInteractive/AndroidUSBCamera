@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'maven-publish'
 }
 
 publishing {
@@ -8,9 +9,9 @@ publishing {
         // "release" here is just the publication name, you can call it whatever
         release(MavenPublication) {
             afterEvaluate {
-                from components.release
+                artifact("$buildDir/outputs/aar/libausbc-release.aar")
 
-                groupId = "com.jiangdg"   
+                groupId = "com.arbelos"
                 artifactId = "libausbc"       
                 version = "3.3.0"              
             }
@@ -19,14 +20,23 @@ publishing {
 
     repositories {
         maven {
+            name = "localTest"
+            url = uri("${buildDir}/mavenLocalTest")
+        }
+
+        maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/arbelos/AndroidUSBCamera"
+            url = "https://maven.pkg.github.com/ArbelosInteractive/AndroidUSBCamera"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
+}
+
+tasks.withType(PublishToMavenRepository) {
+    dependsOn(":libausbc:assembleRelease")
 }
 
 android {
